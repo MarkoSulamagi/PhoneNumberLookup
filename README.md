@@ -25,6 +25,20 @@ Mostly because there's very little to test.
 - No application logging (didn't have time)
 - Poor error handling (didn't have time)
 
+### What to add and what needs changing
+
+- Needs more tests. Specially the Messente HLR API that requires integration tests. 
+Also a lot of logic happens in front-end and it should be tested. Backend application endpoints have very little functionality
+and are the least risky. 
+- Requires error handling. Both on front-end and Messente API.
+- Requires application and error logging.
+- Requires production configuration.
+
+- It should be really easy to add multiple number lookup functionality. The backend supports it. The most complicated question is
+how the UX should work to be comfortable for the user.
+- It would be useful to add application usage limits to users.
+- The Messente HLR api changes should be merged to official API. This needs some work before I can create any pull requests.
+
 ### Architecture
 
 ![alt text](Architecture.png)
