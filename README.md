@@ -12,14 +12,16 @@ phone number exists (is valid) and the name of the operator.
 
 Without any limitations the scope can grow quite large. I reduced the size of the scope by these limitations:
 
-
+- User can only search for 1 number at a time. This can be easily changed
+by making a few changes in the front-end (the backend logic already supports it). 
+Mostly it's a UX question. 
 - There is no production build. Only development configuration.
-- messente-python is missing a Hlr endpoint support. I created the integration for it. I included some unit tests, 
-but not enough to cover everything.
-- There is no error handling if Messente should have API errors. 
+- Official messente-python library is missing a HLR endpoint support. I created the integration for it, but it needs some work
+before it can be merged in the library. I included some unit tests, but not enough to cover everything.
+- There is no error handling in the API if Messente should have API errors. 
 - Backend is written in Python 3. The application itself doesn't have tests. Only the Messente integration. 
 Mostly because there's very little to test. 
-- Frontend is written with Javascript (jquery) with webpack and ES6 compatibility. There are no tests in front end. 
+- Front-end is written with Javascript (jquery) with webpack and ES6 compatibility. There are no tests in front end. 
 - No application logging (didn't have time)
 - Poor error handling (didn't have time)
 
@@ -83,43 +85,3 @@ Depending on the speed of the internet. Downloads only happen on first run.
 **Install new JS library**
 
 `docker exec -it numberlookup_npm npm install --save redux`
-
-- What does /hlr/sync mean in the endpoint?
-- Why api2. and api3. subdomains are not working with HLR? 
-- Python library needs updates to enable integration with new API endpoints.
-HTTP Basic Auth requires changes in API.call_api()
-- Application configurations in .ini file is a bit outdated. .env might be better solution
-
-Endpoints
-
-- GET /
-RESPONSE:
-Page
-
-- POST /lookup 
-REQUEST (application/json):
-phone_numbers: ['+372534234', '+3723543934', '+54930232']
-
-
-RESPONSE (application/json):
-[
-    {'number': '+37256897561', 'error': 'Prefix based response used!'}  # WHAT\'S THIS?
-    {"number": "+37255112233", 'error": 'Unknown Subscriber"},  # Number doesn\'t exist
-    {"number": "+37255112233", 'error": 'Absent Subscriber"}  # Phone turned off
-]
-
-Python library:
-- Had to extend Messente class (unneserarry)
-- Had to overwrite call_api() method to enable basic auth
-
-
-docker exec -it numberlookup_app_1 python -m unittest services.messente_api_tests
-
-- Env file
-
-# ADD DEVELOPMENTS
-LIMITS AND USAGE
-STYLES LOADING INTO SEPARATE FILES
-SWITCH INTL-TEL-INPUT DEPENDENCY
-ADD NEW NUMBERS USING JAVASCRIPT
-
