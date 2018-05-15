@@ -21,15 +21,14 @@ services:
 
   app:
     restart: on-failure
+    container_name: numberlookup_app
     build:
       context: ./app/
       dockerfile: deployment/app.docker
     volumes:
       - ./app/:/usr/src/app
-    environment:
-      - DEBUG=true
-      - MESSENTE_API_USERNAME=7515d45783fbe0f46277f6360425b47c
-      - MESSENTE_API_PASSWORD=775b1b46ae0c13f0deb439a79364ab9f
+    env_file:
+      - .env
     logging:
       driver: "json-file"
       options:
@@ -38,6 +37,7 @@ services:
 
   npm:
     restart: on-failure
+    container_name: numberlookup_npm
     build:
       context: ./app/public
       dockerfile: npm.docker

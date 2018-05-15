@@ -4,8 +4,8 @@ config = {
     'debug': getenv('DEBUG', type=bool, default=False),
 
     'messente': {
-        'username': getenv('MESSENTE_USERNAME'),
-        'password': getenv('MESSENTE_PASSWORD'),
+        'username': getenv('MESSENTE_API_USERNAME'),
+        'password': getenv('MESSENTE_API_PASSWORD'),
     }
 }
 

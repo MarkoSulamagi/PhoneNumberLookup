@@ -12,9 +12,9 @@ export default class {
         this._resetValidation();
         this.lookupResults = lookupResults;
 
-        $("#lookupInput1").intlTelInput();
-        $("#lookupInput2").intlTelInput();
-        $("#lookupInput3").intlTelInput();
+        $('.lookup-input').each((i, element) => {
+            $(element).intlTelInput();
+        });
         $("#lookupForm").submit(event => this._onSubmit(event));
     }
 
