@@ -1,0 +1,8 @@
+FROM python:3.6-onbuild
+MAINTAINER Marko Sulamägi
+
+COPY deployment/run_gunicorn.sh /gunicorn-start.sh
+COPY deployment/logging.conf /logging.conf
+
+RUN chmod +x /gunicorn-start.sh
+CMD /gunicorn-start.sh --noinput

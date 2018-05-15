@@ -1,0 +1,51 @@
+version: '3'
+services:
+
+  nginx:
+    restart: on-failure
+    build:
+      context: ./
+      dockerfile: nginx/nginx.docker
+    volumes:
+      - ./app/public/:/var/www
+    ports:
+      - "8555:80"
+    depends_on:
+      - app
+      - npm
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "1000m"
+        max-file: "5"
+
+  app:
+    restart: on-failure
+    build:
+      context: ./app/
+      dockerfile: deployment/app.docker
+    volumes:
+      - ./app/:/usr/src/app
+    environment:
+      - DEBUG=true
+      - MESSENTE_API_USERNAME=7515d45783fbe0f46277f6360425b47c
+      - MESSENTE_API_PASSWORD=775b1b46ae0c13f0deb439a79364ab9f
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "1000m"
+        max-file: "5"
+
+  npm:
+    restart: on-failure
+    build:
+      context: ./app/public
+      dockerfile: npm.docker
+    volumes:
+      - ./app/public/:/usr/src/app
+      - /usr/src/app/node_modules
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "1000m"
+        max-file: "5"

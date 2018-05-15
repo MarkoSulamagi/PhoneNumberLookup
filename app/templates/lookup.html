@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block title %}Phone number lookup{% endblock %}
+
+{% block content %}
+<div class="container">
+
+    <div class="mt-5">
+        {% include "lookup-form.html" %}
+    </div>
+
+    <!-- Uncommented due to functionality not developed -->
+    <!--<p class="mt-5 text-center">Limits: You have used <strong>100/200</strong> lookups in the current hour.-->
+        <!--Your limit will reset in <strong>33 minutes</strong>.</p>-->
+
+    <div class="mt-5">
+        {% include "lookup-results.html" %}
+    </div>
+
+</div>
+{% endblock %}

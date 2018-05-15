@@ -1,0 +1,68 @@
+export default class {
+
+    constructor() {
+        this.resultCount = 0;
+    }
+
+    startLoading() {
+        $('.loading').show();
+        $('.results-table').hide();
+    }
+
+    stopLoading() {
+        $('.loading').hide();
+        if (this.resultCount > 0) {
+            $('.results-table').show();
+        }
+    }
+
+    _resetTable() {
+        $('.results-table tbody tr').remove();
+    }
+
+    addResults(results) {
+        this._resetTable();
+        this.resultCount = results.length;
+
+        results.forEach((result, index) => {
+            this._add(result);
+        });
+    }
+
+    _add(result) {
+        if (result["error"]) {
+            let errorMsg = '';
+            switch (result["error"]) {
+                case "Unknown Subscriber":
+                    errorMsg = "Number doesn't exist.";
+                    break;
+                case "Absent Subscriber":
+                    errorMsg = "Unable to look up the number. The phone could be turned off or out of range.";
+                    break;
+                case "Prefix based response used!":
+                    errorMsg = "Unable to look up the number. The phone could be turned off or out of range.";
+                    break;
+                default:
+                    errorMsg = result["error"];
+                    break;
+            }
+
+            this._addTemplateRow(result['number'], errorMsg);
+        } else {
+            this._addTemplateRow(result['number'], result['status'], result['currentNetwork']['networkName'],
+            result['currentNetwork']['countryName'])
+        }
+    }
+
+    _addTemplateRow(number, status, networkName = '&nbsp;', countryName = '&nbsp;') {
+        $('.results-table tbody:last-child').append('' +
+            '<tr>' +
+            `<td>${number}</td>` +
+            `<td>${status}</td>` +
+            `<td>${networkName}</td>` +
+            `<td>${countryName}</td>` +
+            '</tr>')
+    }
+
+
+}

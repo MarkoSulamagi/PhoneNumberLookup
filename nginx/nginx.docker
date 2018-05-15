@@ -1,0 +1,11 @@
+FROM nginx:1.13
+MAINTAINER Marko Sulamägi
+
+RUN apt-get update
+
+WORKDIR /var/www
+
+# Copy files
+ADD ./nginx/vhost-dev.conf /etc/nginx/conf.d/default.conf
+ADD ./nginx/nginx.conf /etc/nginx/nginx.conf
+COPY . ./

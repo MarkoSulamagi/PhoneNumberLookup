@@ -1,0 +1,17 @@
+# Local configuration
+.env
+*.env
+
+# IDEs
+.idea
+
+# Cache files
+__pycache__
+
+# Libraries
+app/public/node_modules
+app/public/node_modules/*
+
+# Runtime files
+app/public/dist
+app/public/dist/*

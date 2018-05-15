@@ -1,0 +1,12 @@
+gunicorn==19.6.0
+gevent==1.2.1
+json-logging-py==0.2
+smart-getenv==1.1.0
+webargs==1.8.1
+flask-cors==3.0.3
+flask-classy==0.6.10
+flask==1.0.2
+requests==2.18.4
+flask_testing==0.7.1
+faker==0.8.13
+messente-python==1.2.5

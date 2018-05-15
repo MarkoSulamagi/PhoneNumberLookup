@@ -1,0 +1,25 @@
+@import "~bootstrap/scss/bootstrap";
+
+$flagsImagePath: "../img/";
+$flagsImageName: "flags";
+$flagsImageExtension: "png";
+
+@import "~intl-tel-input/src/css/intlTelInput.scss";
+
+.feather {
+  width: 16px;
+  height: 16px;
+}
+
+.feather-loader {
+  width: 64px;
+  height: 64px;
+}
+
+.form-group {
+  text-align: center;
+}
+
+.invalid-feedback {
+  text-align: center;
+}
