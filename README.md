@@ -52,13 +52,7 @@ https://docs.docker.com/compose/
 
 On Ubuntu 16.04 https://www.digitalocean.com/community/tutorials/how-to-install-docker-compose-on-ubuntu-16-04
 
-**4. Build application**
-
-`docker-compose build`
-
-Docker needs to download all the dependencies, so it could take a while.
-
-**5. Add configuraiton**
+**4. Add configuraiton**
 
 Rename .env.example into .env.
 
@@ -66,6 +60,12 @@ Rename .env.example into .env.
 
 Open .env files and replace the sample configuration with your own. Messente API username and password are required. 
 You can sign up to [Messente]('https://messente.com').
+
+**5. Build application**
+
+`docker-compose build`
+
+Docker needs to download all the dependencies, so it could take a while.
 
 **6. Run application**
 
