@@ -84,4 +84,4 @@ Depending on the speed of the internet. Downloads only happen on first run.
 
 **Install new JS library**
 
-`docker exec -it numberlookup_npm npm install --save redux`
+`docker exec -it numberlookup_npm npm install --save your-library-name`
