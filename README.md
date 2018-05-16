@@ -3,7 +3,7 @@
 Web application for looking up phone number operators. 
 Using API provided by [Messente](https://messente.com).
 
-Test environment can be found [here](http://104.214.219.4:8555).
+Test environment can be found [here](http://ec2-54-93-237-255.eu-central-1.compute.amazonaws.com:8555).
 
 ### Scope of the application
 
